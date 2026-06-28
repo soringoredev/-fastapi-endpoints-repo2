@@ -10,3 +10,7 @@ COURSES = [
     {'title': 'Databases', 'trainer': 'Andrei', 'level': 'intermediate'},
     {'title': 'System Design', 'trainer': 'Irina', 'level': 'advanced'}
 ]
+
+@app.get('/courses')
+async def read_all_courses():
+    return COURSES
