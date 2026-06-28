@@ -14,3 +14,9 @@ COURSES = [
 @app.get('/courses')
 async def read_all_courses():
     return COURSES
+
+@app.get("/courses/{course_title}")
+async def read_course(course_title: str):
+    for course in COURSES:
+        if course.get('title').casefold() == course_title.casefold():
+            return course
