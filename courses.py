@@ -39,3 +39,10 @@ async def update_course(updated_course=Body()):
     for i in range(len(COURSES)):
         if COURSES[i].get('title').casefold() == updated_course.get('title').casefold():
             COURSES[i] = updated_course
+
+@app.delete('/courses/delete_course/{course_title}')
+async def delete_course(course_title: str):
+    for i in range(len(COURSES)):
+        if COURSES[i].get('title').casefold() == course_title.casefold():
+            COURSES.pop(i)
+            break
