@@ -33,3 +33,9 @@ async def read_course_by_trainer(trainer: str):
 @app.post('/courses/create_course/')
 async def create_course(new_course=Body()):
     COURSES.append(new_course)
+
+@app.put('/courses/update_course')
+async def update_course(updated_course=Body()):
+    for i in range(len(COURSES)):
+        if COURSES[i].get('title').casefold() == updated_course.get('title').casefold():
+            COURSES[i] = updated_course
