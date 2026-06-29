@@ -20,3 +20,12 @@ async def read_course(course_title: str):
     for course in COURSES:
         if course.get('title').casefold() == course_title.casefold():
             return course
+
+@app.get("/courses/bytrainer")
+async def read_course_by_trainer(trainer: str):
+    courses_to_return = []
+    for course in COURSES:
+        if course.get('trainer').casefold() == trainer.casefold():
+            courses_to_return.append(course)
+
+    return courses_to_return
